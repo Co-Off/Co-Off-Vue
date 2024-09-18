@@ -1,35 +1,37 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-import CartPlus from 'vue-material-design-icons/CartPlus.vue';
-import Account from 'vue-material-design-icons/Account.vue';
-import Menu from 'vue-material-design-icons/Menu.vue';
+import CartPlus from 'vue-material-design-icons/CartPlus.vue'
+import Account from 'vue-material-design-icons/Account.vue'
+import Menu from 'vue-material-design-icons/Menu.vue'
 
-const menuAberto = ref(false);
+const menuAberto = ref(false)
 </script>
 <template>
-    <header>
-      <div class="header--logo">
-        <img src="@/assets/logoCo-off.png" alt="Logo" />
-        <h1>Co-Off</h1>
-      </div>
-      <nav>
-        <ul :class="menuAberto ? 'menu' : ''">
-          <li>Home</li>
-        </ul>
-      </nav>
-      <div class="header--icons">
-        <Account />
-        <CartPlus />
-        <Menu class="menu-hamburger" @click="menuAberto = !menuAberto" />
-      </div>
-    </header>
-  </template>
+  <header>
+    <div class="header--logo">
+      <img src="@/assets/logoCo-off.png" alt="Logo" />
+      <h1>Co-Off</h1>
+    </div>
+    <nav>
+      <ul :class="menuAberto ? 'menu' : ''">
+        <li>Home</li>
+      </ul>
+    </nav>
+    <div class="header--icons">
+      <Account />
+      <CartPlus />
+      <Menu class="menu-hamburger" @click="menuAberto = !menuAberto" />
+    </div>
+  </header>
+</template>
 
 <style scoped>
 header {
   background: #fff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
   padding: 0.2rem 1rem;
   display: flex;
   justify-content: space-between;
@@ -74,7 +76,9 @@ nav li {
     flex-direction: column;
     position: absolute;
     background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    box-shadow:
+      0 10px 20px rgba(0, 0, 0, 0.19),
+      0 6px 6px rgba(0, 0, 0, 0.23);
     border-radius: 10px;
     right: 0;
     text-align: right;
