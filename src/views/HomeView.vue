@@ -1,9 +1,5 @@
-<script setup>
-  import ListagemProdutos from '@/components/ListagemProdutos.vue';
-</script>
+<script setup></script>
 
 <template>
-  <ListagemProdutos />
+  <h1>Co-Off</h1>
 </template>
-
-<style scoped></style>
