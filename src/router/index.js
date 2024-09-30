@@ -17,8 +17,8 @@ const router = createRouter({
         },
         {
           path: '/produtos/adicionar',
-          name: 'ProductAdd',
-          component: () => import('@/views/ProductAdd.vue'),
+          name: 'ProdutoAdd',
+          component: () => import('@/views/ProdutoAdd.vue'),
         },
         {
           path: '/login',

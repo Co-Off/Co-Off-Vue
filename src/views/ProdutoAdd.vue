@@ -2,12 +2,12 @@
 import { onMounted, reactive, ref } from 'vue';
 
 import ModalAddCategory from '@/components/ModalAddCategory.vue';
-import { useCategoryStore } from '@/stores/category';
-import { useProductStore } from '@/stores/product';
+import { useCategoriaStore } from '@/stores/categoria';
+import { useProdutoStore } from '@/stores/produto';
 import { useUploaderStore } from '@/stores/uploader';
 
-const categoryStore = useCategoryStore();
-const productStore = useProductStore();
+const categoriaStore = useCategoriaStore();
+const produtoStore = useProdutoStore();
 const uploaderStore = useUploaderStore();
 
 const showModal = ref(false);
@@ -15,10 +15,10 @@ const showModal = ref(false);
 const file = ref(null);
 const previewImage = ref('');
 
-const product = reactive({
+const produto = reactive({
   title: '',
   description: '',
-  category: '',
+  categoria: '',
   image_attachment_key: '',
   price: '',
   stock: '',
@@ -30,12 +30,12 @@ const uploadImage = (e) => {
 };
 
 async function save() {
-  product.image_attachment_key = await uploaderStore.uploadImage(file.value);
-  await productStore.createProduct(product);
-  Object.assign(product, {
+  produto.image_attachment_key = await uploaderStore.uploadImage(file.value);
+  await produtoStore.createProduto(produto);
+  Object.assign(produto, {
     title: '',
     description: '',
-    category: '',
+    categoria: '',
     image_attachment_key: '',
     price: '',
     stock: '',
@@ -43,7 +43,7 @@ async function save() {
 }
 
 onMounted(async () => {
-  await categoryStore.getCategories();
+  await categoriaStore.getCategorias();
 });
 </script>
 <template>
@@ -52,23 +52,23 @@ onMounted(async () => {
   <form class="form" @submit.prevent="save">
     <div class="row-form">
       <label for="title">Título</label>
-      <input type="text" id="title" v-model="product.title" />
+      <input type="text" id="title" v-model="produto.title" />
     </div>
     <div class="row-form">
       <label for="description">Descrição</label>
-      <textarea id="description" v-model="product.description"></textarea>
+      <textarea id="description" v-model="produto.description"></textarea>
     </div>
     <div class="row-form">
-      <label for="category">Categoria</label>
+      <label for="categoria">Categoria</label>
       <div class="row ">
-        <select id="category" v-model="product.category">
+        <select id="categoria" v-model="produto.categoria">
           <option value="" disabled>Selecione uma categoria</option>
           <option
-            v-for="category in categoryStore.categories"
-            :key="category.id"
-            :value="category.id"
+            v-for="categoria in categoriaStore.categories"
+            :key="categoria.id"
+            :value="categoria.id"
           >
-            {{ category.name }}
+            {{ categoria.name }}
           </option>
         </select>
         <button class="btn-icon" @click="showModal = !showModal">+</button>
@@ -88,11 +88,11 @@ onMounted(async () => {
     </div>
     <div class="row-form">
       <label for="price">Preço</label>
-      <input type="number" id="price" v-model="product.price" />
+      <input type="number" id="price" v-model="produto.price" />
     </div>
     <div class="row-form">
       <label for="stock">Estoque</label>
-      <input type="number" id="stock" v-model="product.stock" />
+      <input type="number" id="stock" v-model="produto.stock" />
     </div>
     <button class="btn-send" type="submit">Adicionar</button>
   </form>

@@ -1,18 +1,18 @@
 <script setup>
 import { reactive, defineEmits } from 'vue';
-import { useCategoryStore } from '@/stores/category';
+import { useCategoriaStore } from '@/stores/categoria';
 
 const emit = defineEmits(['close']);
 
-const categoryStore = useCategoryStore();
+const categoriaStore = useCategoriaStore();
 
-const category = reactive({
+const categoria = reactive({
   name: '',
   icon: '',
 });
 
-const createCategory = async () => {
-  await categoryStore.createCategory(category);
+const createCategoria = async () => {
+  await categoriaStore.createCategoria(categoria);
   emit('close');
 };
 </script>
@@ -26,14 +26,14 @@ const createCategory = async () => {
           <i class="mdi mdi-close" />
         </button>
       </div>
-      <form class="form" @submit.prevent="createCategory">
+      <form class="form" @submit.prevent="createCategoria">
         <div class="row-form">
           <label for="name">Nome</label>
-          <input type="text" id="name" v-model="category.name" />
+          <input type="text" id="name" v-model="categoria.name" />
         </div>
         <div class="row-form">
           <label for="icon">Ícone</label>
-          <input type="text" id="icon" v-model="category.icon" />
+          <input type="text" id="icon" v-model="categoria.icon" />
         </div>
         <button class="btn-send" type="submit">Adicionar</button>
       </form>

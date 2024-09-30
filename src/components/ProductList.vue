@@ -1,58 +1,58 @@
 <script setup>
 import { onMounted, watch } from 'vue';
-import { useProductStore } from '@/stores/product';
+import { useProdutoStore } from '@/stores/produto';
 
 import { formatDescription, formatPrice, formatTitle } from '@/helpers/format';
 
-const props = defineProps(['category_id']);
-const productStore = useProductStore();
+const props = defineProps(['categoria_id']);
+const produtoStore = useProdutoStore();
 
-async function getProducts() {
-  if (props.category_id) {
-    await productStore.getProductsByCategory(props.category_id);
+async function getProdutos() {
+  if (props.categoria_id) {
+    await produtoStore.getProdutosPorCategoria(props.categoria_id);
   } else {
-    await productStore.getProducts();
+    await produtoStore.getProdutos();
   }
 }
 
 watch(
-  () => props.category_id,
+  () => props.categoria_id,
   async () => {
-    await getProducts();
+    await getProdutos();
   },
 );
 
 onMounted(async () => {
-  await getProducts();
+  await getProdutos();
 });
 </script>
 
 <template>
   
-  <div class="product-list">
-    <router-link :to="{ name: 'ProductAdd' }">
+  <div class="produto-list">
+    <router-link :to="{ name: 'ProdutoAdd' }">
       <button class="icon ">
         <i class="mdi mdi-plus" />
       </button>
     </router-link>
-    <div v-if="productStore.products.length === 0">
+    <div v-if="produtoStore.produtos.length === 0">
       <p>Produtos não encontrados!!!</p>
     </div>
     <div
-      v-for="product in productStore.products"
-      :key="product.id"
-      class="product-card"
+      v-for="produto in produtoStore.produtos"
+      :key="produto.id"
+      class="produto-card"
     >
-      <div class="product-img-wrapper">
-        <img :src="product.image?.url" alt="product.name" />
+      <div class="produto-img-wrapper">
+        <img :src="produto.image?.url" alt="produto.name" />
         <i class="mdi mdi-heart-outline" />
       </div>
-      <div class="product-title-price">
-        <p>{{ formatTitle(product.title) }}</p>
-        <p>{{ formatPrice(product.price * 1) }}</p>
+      <div class="produto-title-price">
+        <p>{{ formatTitle(produto.title) }}</p>
+        <p>{{ formatPrice(produto.price * 1) }}</p>
       </div>
-      <div class="product-description-stars">
-        <p>{{ formatDescription(product.description) }}</p>
+      <div class="produto-description-stars">
+        <p>{{ formatDescription(produto.description) }}</p>
         <div class="stars">
           <i class="mdi mdi-star" />
           <i class="mdi mdi-star" />
@@ -89,7 +89,7 @@ onMounted(async () => {
   font-size: 2rem;
 }
 
-.product-list {
+.produto-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -97,12 +97,12 @@ onMounted(async () => {
   padding: 1rem;
 }
 
-.product-card {
+.produto-card {
   width: 225px;
   font-family: 'Belleza', sans-serif;
 }
 
-.product-img-wrapper {
+.produto-img-wrapper {
   display: flex;
   justify-content: center;
   align-items: top;
@@ -113,32 +113,32 @@ onMounted(async () => {
   height: 201px;
 }
 
-.product-img-wrapper img {
+.produto-img-wrapper img {
   width: 153px;
   height: 170px;
   object-fit: cover;
 }
 
-.product-title-price {
+.produto-title-price {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
 }
 
-.product-title-price p {
+.produto-title-price p {
   font-weight: bold;
   font-size: 16px;
   color: #010101;
 }
 
-.product-description-stars {
+.produto-description-stars {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
 
-.product-description-stars p {
+.produto-description-stars p {
   font-size: 12px;
   color: #535050;
 }
