@@ -44,15 +44,15 @@ onMounted(async () => {
       class="produto-card"
     >
       <div class="produto-img-wrapper">
-        <img :src="produto.image?.url" alt="produto.name" />
+        <img :src="produto.imagemDoProduto?.url" alt="produto.name" />
         <i class="mdi mdi-heart-outline" />
       </div>
       <div class="produto-title-price">
-        <p>{{ formatTitle(produto.title) }}</p>
-        <p>{{ formatPrice(produto.price * 1) }}</p>
+        <p>{{ formatTitle(produto.nome) }}</p>
+        <p>{{ formatPrice(produto.preco * 1) }}</p>
       </div>
       <div class="produto-description-stars">
-        <p>{{ formatDescription(produto.description) }}</p>
+        <p>{{ formatDescription(produto.descricao) }}</p>
         <div class="stars">
           <i class="mdi mdi-star" />
           <i class="mdi mdi-star" />
