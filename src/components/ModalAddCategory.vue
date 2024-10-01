@@ -1,7 +1,7 @@
 <script setup>
 import { reactive, defineEmits } from 'vue';
 import { useCategoriaStore } from '@/stores/categoria';
-
+import Close from 'vue-material-design-icons/Close.vue';
 const emit = defineEmits(['close']);
 
 const categoriaStore = useCategoriaStore();
@@ -23,7 +23,7 @@ const createCategoria = async () => {
       <div class="modal-header">
         <h2>Adicionar Categoria</h2>
         <button @click="$emit('close')" class="btn-close">
-          <i class="mdi mdi-close" />
+          <Close/>
         </button>
       </div>
       <form class="form" @submit.prevent="createCategoria">
@@ -74,17 +74,20 @@ const createCategoria = async () => {
 }
 
 .btn-close {
-  background-color: #0a2668;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 50%;
   width: 30px;
   height: 30px;
   cursor: pointer;
+  padding: 0px;
+  text-align: center;
 }
 
 .btn-close i {
   font-size: 1.5rem;
+  align-content: center;
 }
 
 .form {
@@ -100,7 +103,7 @@ const createCategoria = async () => {
 }
 
 .form button.btn-send {
-  background-color: #0a2668;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 5px;

@@ -1,34 +1,29 @@
-<script setup></script>
+<script setup>
+import Facebook from  'vue-material-design-icons/Facebook.vue';
+import Twitter from 'vue-material-design-icons/Twitter.vue';
+import Instagram from 'vue-material-design-icons/Instagram.vue';
+
+</script>
 <template>
-  <div class="links">
-    <RouterLink to="/">Help</RouterLink>
-    <RouterLink to="/">Contact Us</RouterLink>
-    <RouterLink to="/">Privacy & Terms</RouterLink>
-  </div>
   <div class="icons">
-    <i class="mdi mdi-facebook" />
-    <i class="mdi mdi-twitter" />
-    <i class="mdi mdi-instagram" />
+    <Facebook  class="Face"/>
+    <Twitter   class="Twt"/>
+    <Instagram class="Insta"/>
   </div>
 </template>
 <style scoped>
-.links {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  gap: 4rem;
-  font-size: 1.2rem;
-  color: #000;
-}
-
-.links a {
-  text-decoration: none;
-}
-
 .icons {
   padding-right: 3rem;
   display: flex;
   gap: 4rem;
   font-size: 2.2rem;
 }
+
+.Face:hover,
+.Twt:hover,
+.Insta:hover {
+  transform: scale(1.8);
+  transition: transform 0.5s ease-in-out;
+}
+
 </style>

@@ -36,7 +36,7 @@ onMounted(async () => {
       </button>
     </router-link>
     <div v-if="produtoStore.produtos.length === 0">
-      <p>Produtos não encontrados!!!</p>
+      <h3 class="spam">Produtos não encontrados!</h3>
     </div>
     <div
       v-for="produto in produtoStore.produtos"
@@ -67,8 +67,9 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+
 .icon {
-  background-color: #0a2668;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 50%;
@@ -93,8 +94,9 @@ onMounted(async () => {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
   padding: 1rem;
+  text-align: center;
+  
 }
 
 .produto-card {

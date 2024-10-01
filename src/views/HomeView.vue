@@ -28,6 +28,16 @@ onMounted(() => {
 </script>
 
 <template>
-  Nossos Produtos
+  <h2>Nossos Produtos:</h2>
+  
   <product-list />
 </template>
+<style scoped>
+h2{
+  margin-top: 30px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+</style>

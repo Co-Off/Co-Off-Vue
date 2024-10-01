@@ -118,7 +118,7 @@ onMounted(async () => {
 }
 
 .form button.btn-send {
-  background-color: #0a2668;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 5px;
@@ -129,7 +129,7 @@ onMounted(async () => {
 }
 
 .form button.btn-icon {
-  background-color: #0a2668;
+  background-color: #000000;
   color: white;
   border: none;
   width: 30px;
@@ -145,7 +145,7 @@ onMounted(async () => {
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
-  border: 4px solid #0a2668;
+  border: 4px solid #000000;
   padding: 0.1rem;
 }
 </style>
