@@ -33,10 +33,10 @@
 }
 
 header {
-  display: flex;
+  display: flexbox;
+  
   widows: 100vw;
   justify-content: flex-end;
-  padding: 1.5rem;
   grid-area: header;
 }
 

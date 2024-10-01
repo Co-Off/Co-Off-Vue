@@ -28,5 +28,6 @@ onMounted(() => {
 </script>
 
 <template>
+  Nossos Produtos
   <product-list />
 </template>
