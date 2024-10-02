@@ -4,8 +4,12 @@ import { useProdutoStore } from '@/stores/produto';
 
 import { formatDescription, formatPrice, formatTitle } from '@/helpers/format';
 
+// const props = defineProps(['categoria_id']);
+//const produtoStore = useProdutoStore();
+
 const props = defineProps(['categoria_id']);
 const produtoStore = useProdutoStore();
+const imagePrefix = 'http://0.0.0.0:19003/'; 
 
 async function getProdutos() {
   if (props.categoria_id) {
@@ -24,6 +28,7 @@ watch(
 
 onMounted(async () => {
   await getProdutos();
+  console.log(produtoStore.produtos)
 });
 </script>
 
@@ -44,7 +49,8 @@ onMounted(async () => {
       class="produto-card"
     >
       <div class="produto-img-wrapper">
-        <img :src="produto.imagemDoProduto?.url" alt="produto.name" />
+        <!-- <img :src="produto.imagemDoProduto?.url" alt="produto.image" /> -->
+        <img :src="imagePrefix + produto.imagemDoProduto?.url" alt="produto.image" />
         <i class="mdi mdi-heart-outline" />
       </div>
       <div class="produto-title-price">
