@@ -7,21 +7,22 @@ import { onMounted, watch } from 'vue';
 
 <template>
   <div class="flex-container">
-      <div/>
-      <div/>
-      <div>
-        <img src="@/assets/logo-horizontal-branca.png" class="logo"/>
-      </div>
-     <div/>
-      <div class="icons">
-      <CartPlus class="icon-shop"/>
-      <router-link :to ="{name: 'Login' }">
-        <button class="button">
-          <div>Login</div>
-          <Account class="icon-login"/>
-        </button>
+    <div/>
+    <div/>
+    <div>
+      <router-link :to ="{name: 'Home' }">
+          <img src="@/assets/logo-horizontal-branca.png" class="logo"/>
       </router-link>
-
+    </div>
+    <div/>
+      <div class="icons">
+        <CartPlus class="icon-shop"/>
+        <router-link :to ="{name: 'Login' }">
+          <button class="button">
+            <div>Login</div>
+            <Account class="icon-login"/>
+          </button>
+        </router-link>
       </div>
   </div>
   <div class="login-button"></div>

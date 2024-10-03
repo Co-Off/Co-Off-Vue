@@ -1,6 +1,5 @@
 <script setup>
   import MediumHeader from '@/components/templates/medium/MediumHeader.vue';
-  import MediumAside from '@/components/templates/medium/MediumAside.vue';
   import MediumFooter from '@/components/templates/medium/MediumFooter.vue';
 </script>
 
@@ -9,9 +8,6 @@
     <header>
       <medium-header />
     </header>
-    <aside>
-      <medium-aside />
-    </aside>
     <main>
       <router-view />
     </main>
@@ -24,7 +20,7 @@
 <style scoped>
 #layout-medium {
   display: grid;
-  grid-template-columns: 1fr 6fr;
+  grid-template-columns: 0fr 4fr;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
     'aside header'
@@ -35,21 +31,9 @@
 
 header {
   display: flex;
-  widows: 100vw;
   justify-content: flex-end;
-  padding: 1.5rem;
   grid-area: header;
-}
-
-aside {
-  border-right: #eeeeee 1px solid;
-  box-shadow: 0 0 10px 0 #eeeeee;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  grid-area: aside;
+  background-color: black;
 }
 
 main {
@@ -62,7 +46,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem;
+  padding: 2rem;
   background-color: #eeeeee;
   grid-area: footer;
 }
