@@ -1,5 +1,5 @@
 <script setup>
-import ProductList from '@/components/ProductList.vue';
+import CategoryList from '@/components/CategoryList.vue';
 
 import { onMounted } from 'vue';
 import { PassageUser } from '@passageidentity/passage-elements/passage-user';
@@ -29,12 +29,11 @@ onMounted(() => {
 
 <template>
   <h2>Nossos Produtos:</h2>
-  
-  <product-list />
+  <category-list />
 </template>
 <style scoped>
 h2{
-  margin-top: 30px;
+  margin: 30px;
   text-align: center;
   font-size: 28px;
   font-weight: bold;
