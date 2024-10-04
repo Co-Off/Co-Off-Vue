@@ -49,8 +49,7 @@ onMounted(async () => {
       class="produto-card"
     >
       <div class="produto-img-wrapper">
-        <!-- <img :src="produto.imagemDoProduto?.url" alt="produto.image" /> -->
-        <img :src="imagePrefix + produto.imagemDoProduto?.url" alt="produto.image" />
+        <img :src="produto.imagemDoProduto?.url" alt="produto.image" />
         <i class="mdi mdi-heart-outline" />
       </div>
       <div class="produto-title-price">
@@ -129,7 +128,7 @@ onMounted(async () => {
 
 .produto-title-price {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   margin-bottom: 1rem;
 }
