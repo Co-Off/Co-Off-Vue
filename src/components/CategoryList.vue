@@ -1,42 +1,42 @@
 <script setup>
-
 </script>
 <template>
     <div class="flex-container">
         <div>
             <router-link :to ="{name: 'Produtos' }">
-                Bebidas Puristas
                 <img src="@/assets/purista.png" class="logo"/>
+                <div>Bebidas Puristas</div>
             </router-link>
         </div>
         <div>
             <router-link :to ="{name: 'Produtos' }">
-                Bebidas Autorais
                 <img src="@/assets/autorais.png" class="logo"/>
+                <div>Bebidas Autorais</div>
             </router-link>
         </div>
         <div>
             <router-link :to ="{name: 'Produtos' }">
-                Bebidas Coadas
                 <img src="@/assets/ico-coado2.png" class="logo"/>
+                <div>Bebidas Coadas</div>
             </router-link>
         </div>
         <div>
             <router-link :to ="{name: 'Produtos' }">
-                Comidas
                 <img src="@/assets/ico-comida3.png" class="logo"/>
+                <div>Comidas</div>
             </router-link>
-        </div>
+
+        </div> 
         <div>
             <router-link :to ="{name: 'Produtos' }">
-                Bebidas Especiais
                 <img src="@/assets/ico-outras-bebidas.png" class="logo"/>
+                <div>Bebidas Especiais</div>
             </router-link>
         </div>
         <div>
             <router-link :to ="{name: 'Produtos' }">
-                Comprar Produtos
                 <img src="@/assets/shop.png" class="logo"/>
+                <div>Loja</div>
             </router-link>
         </div>
     </div>

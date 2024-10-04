@@ -34,7 +34,7 @@
     background-color: #000000;
     color: white;
     padding: 7px ;
-    border-radius: 45px;
+    border-radius: 7px;
     cursor: pointer;
     justify-content: center;
     transition: all;
@@ -57,10 +57,11 @@
     justify-content: center;
     width: 100px;
     margin: 10px;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
     text-align: center;
     line-height: 50px;
     font-size: 30px;
+    margin-top: 5px;
   }
   
   .logo{
@@ -76,8 +77,8 @@
     gap: 1rem;
     align-items: center;
     font-size: 1rem;
-    margin-left: auto;
     color: #ffffff;
+    margin-top: 0px;
   }
   
   
