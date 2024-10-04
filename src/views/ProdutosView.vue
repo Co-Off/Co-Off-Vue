@@ -1,10 +1,14 @@
 <script setup>
 import ProductList from '@/components/ProductList.vue';
+import ArrowLeft from 'vue-material-design-icons/ArrowLeft.vue';
 </script>
 <template>
     <button>
-        <router-link :to ="{name: 'Home' }" class="link">
-            <div class="back">Voltar</div>
+        <router-link :to ="{name: 'Home' }" class="back">
+            <div class="back">
+                <ArrowLeft/>
+                Voltar
+            </div>
         </router-link>
     </button>
     <div>
@@ -30,9 +34,18 @@ button{
     border-radius: 7px;
 
 }
-.link{
+.back{
     text-decoration: none;
     color: #ffffff;
-    text-decoration-line: none;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+
 }
 </style>

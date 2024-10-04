@@ -1,5 +1,6 @@
 <script setup>
 import CategoryList from '@/components/CategoryList.vue';
+import HistoryBox from '@/components/HistoryBox.vue';
 
 import { onMounted } from 'vue';
 import { PassageUser } from '@passageidentity/passage-elements/passage-user';
@@ -30,13 +31,17 @@ onMounted(() => {
 <template>
   <h2>Nossos Produtos:</h2>
   <category-list />
+  <history-box />
 </template>
 <style scoped>
+main{
+margin: none;
+}
 h2{
   margin: 30px;
   text-align: center;
   font-size: 28px;
-  font-weight: bold;
-  color: #333;
+  color: #000000;
+  padding-bottom: 10px;
 }
 </style>

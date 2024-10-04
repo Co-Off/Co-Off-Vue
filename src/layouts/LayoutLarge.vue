@@ -49,7 +49,7 @@ aside {
 
 main {
   min-height: 80%;
-  padding: 2rem;
+  padding: none;
   grid-area: main;
   
 }
