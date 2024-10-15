@@ -69,4 +69,14 @@
     font-size: 20px;
     text-decoration: none;
 }
+  .button:hover{
+    
+
+  }
+  .logo:hover{
+    filter: brightness(1.2);
+
+    transition: filter 0.3s;
+
+  }
 </style>

@@ -3,8 +3,6 @@
 <template>
     <div class="flex-container">
         <div class="history-image">
-            <div class="space"></div>
-            <div class="space"></div>
             <h1 class="title"> We are The CO-OFF</h1>
 
         </div>
@@ -46,12 +44,13 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    justify-content: center;
     align-items: center;
-
+    display: flex;
   }
   .history-text {
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .history-text > p {
     font-size: 20px;

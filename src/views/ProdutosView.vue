@@ -12,11 +12,15 @@ import ArrowLeft from 'vue-material-design-icons/ArrowLeft.vue';
         </router-link>
     </button>
     <div>
+        <h2>Nossos Produtos:</h2>
         <ProductList/>
     </div>
 </template>
 
 <style scoped>
+h2{
+    text-align: center;
+}
 .back {
     text-decoration: none;
     color: #ffffff;

@@ -64,6 +64,7 @@ footer {
   border-top: solid;
   border-color: black;
   border: 0px 5px 0px 0px;
+  border-width: 0.15em;
 
 }
 </style>

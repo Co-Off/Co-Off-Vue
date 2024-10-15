@@ -1,15 +1,13 @@
 <script setup>
-import { onMounted, watch } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { useProdutoStore } from '@/stores/produto';
-
-import { formatDescription, formatPrice, formatTitle } from '@/helpers/format';
-
-// const props = defineProps(['categoria_id']);
-//const produtoStore = useProdutoStore();
+import ModalSpamProduto from './ModalSpamProduct.vue' 
+import { formatPrice } from '@/helpers/format';
 
 const props = defineProps(['categoria_id']);
-const produtoStore = useProdutoStore();
-const imagePrefix = 'http://0.0.0.0:19003/'; 
+const produtoStore = useProdutoStore(); 
+const showSpamProduct = ref(false)
+const currentProduct = ref({})
 
 async function getProdutos() {
   if (props.categoria_id) {
@@ -17,6 +15,11 @@ async function getProdutos() {
   } else {
     await produtoStore.getProdutos();
   }
+}
+
+function showProduct(produto) {
+  currentProduct.value = produto
+  showSpamProduct.value = true
 }
 
 watch(
@@ -35,43 +38,59 @@ onMounted(async () => {
 <template>
   
   <div class="produto-list">
-    <router-link :to="{ name: 'ProdutoAdd' }">
+    <!-- <router-link :to="{ name: 'ProdutoAdd' }">
       <button class="icon ">
         <i class="mdi mdi-plus" />
       </button>
-    </router-link>
+    </router-link> -->
     <div v-if="produtoStore.produtos.length === 0">
       <h3 class="spam">Produtos não encontrados!</h3>
     </div>
     <div
       v-for="produto in produtoStore.produtos"
       :key="produto.id"
-      class="produto-card"
+      class="cards"
     >
-      <div class="produto-img-wrapper">
-        <img :src="produto.imagemDoProduto?.url" alt="produto.image" />
-        <i class="mdi mdi-heart-outline" />
-      </div>
-      <div class="produto-title-price">
-        <p>{{ formatTitle(produto.nome) }}</p>
-        <p>{{ formatPrice(produto.preco * 1) }}</p>
-      </div>
-      <div class="produto-description-stars">
-        <p>{{ formatDescription(produto.descricao) }}</p>
-        <div class="stars">
-          <i class="mdi mdi-star" />
-          <i class="mdi mdi-star" />
-          <i class="mdi mdi-star" />
-          <i class="mdi mdi-star" />
-          <i class="mdi mdi-star" />
+        <div @click="showProduct(produto)">
+          <div class="produto-img-wrapper">
+            <img :src="produto.imagemDoProduto?.url" alt="produto.image" />
+            <i class="mdi mdi-heart-outline" />
+          </div>
+          <div class="produto-title-price">
+            <p>{{ produto.nome }}</p>
+            <p>{{ formatPrice(produto.preco * 1) }}</p>
+          </div>
+          <div class="produto-description-stars">
+            <!-- <p>{{ formatDescription(produto.descricao) }}</p> -->
+          </div>
         </div>
-      </div>
     </div>
   </div>
-  
+  <ModalSpamProduto v-if="showSpamProduct" @close="showSpamProduct=false" :product="currentProduct" />
 </template>
 
 <style scoped>
+.cards{
+  width: 200px;
+  height: 300px;
+
+  overflow: hidden;
+  position: relative;
+
+  border: solid;
+  border-radius: 20px;
+   border-width: 0.15em;
+}
+.cards:hover {
+  transform: scale(1.1,1.1);
+  transition-delay: 0.1s;
+  transition: 0.4s;
+}
+
+.cards:hover > .cards:not(:hover) {
+  filter: blur(10px);
+  transform: scale(0.9, 0.9);
+}
 
 .icon {
   background-color: #000000;
@@ -100,24 +119,25 @@ onMounted(async () => {
   flex-wrap: wrap;
   justify-content: center;
   padding: 1rem;
+  gap: 2rem;
   text-align: center;
+  background-color: #ffffff;
   
 }
 
 .produto-card {
-  width: 225px;
+  width: 200px;
   font-family: 'Belleza', sans-serif;
+  border: #000000;
 }
 
 .produto-img-wrapper {
   display: flex;
   justify-content: center;
   align-items: top;
-  gap: 0.5rem;
   padding-top: 20px;
-  margin-bottom: 1rem;
-  background-color: #eeeeee;
-  height: 201px;
+  background-color: #ffffff;
+  height: 200px;
 }
 
 .produto-img-wrapper img {
@@ -128,9 +148,10 @@ onMounted(async () => {
 
 .produto-title-price {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 1rem;
+  margin: 3px;
 }
 
 .produto-title-price p {
@@ -149,4 +170,5 @@ onMounted(async () => {
   font-size: 12px;
   color: #535050;
 }
+
 </style>

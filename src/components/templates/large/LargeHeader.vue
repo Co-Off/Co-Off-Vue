@@ -1,8 +1,6 @@
 <script setup>
   import CartPlus from 'vue-material-design-icons/CartPlus.vue';
   import Account from 'vue-material-design-icons/Account.vue';
-  import LoginView from '@/views/LoginView.vue';
-  import { onMounted, watch } from 'vue';
   </script>
   
   <template>
@@ -34,18 +32,20 @@
     background-color: #000000;
     color: white;
     padding: 7px ;
-    border-radius: 7px;
+    border-radius: 20px;
     cursor: pointer;
     justify-content: center;
     transition: all;
     align-items: center;
     font-weight: bold;
+    border: 0;
       
   }
   .button:hover {
         background-color: white;
         color: #000000;
         transition: all 0.5s ease;
+        border: 0;
   }
   .flex-container {
     display: flex;
@@ -62,6 +62,10 @@
     line-height: 50px;
     font-size: 30px;
     margin-top: 5px;
+  }
+
+  a {
+    text-decoration: none;
   }
   
   .logo{
