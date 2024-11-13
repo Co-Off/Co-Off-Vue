@@ -1,6 +1,14 @@
 <script setup>
   import CartPlus from 'vue-material-design-icons/CartPlus.vue';
   import Account from 'vue-material-design-icons/Account.vue';
+
+  import {useAuthStore} from '@/stores/auth'
+  const authStore = useAuthStore()
+
+  function handleLogin() { 
+
+
+  }
   </script>
   
   <template>
@@ -16,14 +24,12 @@
         <div class="icons">
           <CartPlus class="icon-shop"/>
           <router-link :to ="{name: 'Login' }">
-            <button class="button">
-              <div>Login</div>
+            <button class="button" @click="handleLogin">{{ authStore.isLoggedIn ? 'Meu Perfil' : 'Login' }}
               <Account class="icon-login"/>
             </button>
           </router-link>
         </div>
     </div>
-    <div class="login-button"></div>
   </template>
   
   <style scoped>
