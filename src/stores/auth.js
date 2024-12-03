@@ -1,27 +1,27 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
 
+import { useRouter } from 'vue-router';
+
 import AuthService from '@/services/auth';
 const authService = new AuthService();
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref({});
-  const isLoggedIn = ref(false)
+  const router = useRouter();
+  const isLogged = ref(false);
+
 
   async function setToken(token) {
-    try {
-      user.value = await authService.postUserToken(token);
-      isLoggedIn.value = true;
-    } catch (error) {
-      console.error(error);
-      unsetToken();
-    }
+    user.value = await authService.postUserToken(token);
+    isLogged.value = true;
+    router.push('/');
   }
 
   function unsetToken() {
     user.value = {};
-    isLoggedIn.value = false;
+    isLogged.value = false;
   }
 
-  return { user, isLoggedIn, setToken, unsetToken };
+  return { user, setToken, unsetToken , isLogged};
 });
