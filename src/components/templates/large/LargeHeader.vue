@@ -19,14 +19,11 @@
   
   <template>
     <div class="flex-container">
-      <div/>
-      <div/>
       <div>
         <router-link :to ="{name: 'Home' }">
             <img src="@/assets/logo-horizontal-branca.png" class="logo"/>
         </router-link>
       </div>
-      <div/>
         <div class="icons">
           <CartPlus class="icon-shop"/>
           <router-link :to ="{name: 'Login' }">
@@ -39,6 +36,7 @@
   </template>
  
   <style scoped>
+
   .button {
     display: flex;
     background-color: #000000;
@@ -75,3 +73,4 @@
     font-size: 30px;
     margin-top: 5px;
   }
+  </style>
