@@ -1,6 +1,6 @@
 <script setup>
 import Close from 'vue-material-design-icons/Close.vue';
-import { formatPrice, formatDescription } from '@/helpers/format';
+import { formatPrice } from '@/helpers/format';
 
 
 defineProps(['product'])
@@ -12,7 +12,6 @@ defineProps(['product'])
 <template>
   <div class="modal">
     <div class="modal-content">
-      <!-- <div class="modal-header"> -->
         <button @click="$emit('close')" class="btn-close">
           <Close/>
         </button>
@@ -30,7 +29,6 @@ defineProps(['product'])
             </div>
           </div>
       </div>
-    <!-- </div> -->
   </div>
 </template>
 
@@ -106,6 +104,16 @@ defineProps(['product'])
     font-size: 12px;
     color: #535050;
   }
-  
+  .btn-close{
+    font-size: 24px;
+    color: #ffffff;
+    background-color: #000000;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+  }
 
 </style>
