@@ -35,7 +35,7 @@
         <div>
             <router-link :to ="{name: 'Produtos' }" class="button">
                 <img src="@/assets/shop.png" class="logo"/>
-                <div>Comprar Mais</div>
+                <div>Outros Produtos</div>
             </router-link>
         </div>
     </div>

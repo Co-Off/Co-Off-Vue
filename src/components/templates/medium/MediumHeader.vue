@@ -1,13 +1,11 @@
 <script setup>
   import CartPlus from 'vue-material-design-icons/CartPlus.vue';
   import Account from 'vue-material-design-icons/Account.vue';
-  import LoginView from '@/views/LoginView.vue';
-  import { onMounted, watch } from 'vue';
+
   </script>
   
   <template>
     <div class="flex-container">
-
       <div>
         <router-link :to ="{name: 'Home' }">
             <img src="@/assets/logo-horizontal-branca.png" class="logo"/>
