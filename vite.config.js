@@ -9,6 +9,9 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
+      define: {
+        'process.env.VITE_BACKEND_BASE_URL': JSON.stringify(process.env.VITE_BACKEND_BASE_URL)
+      },
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
