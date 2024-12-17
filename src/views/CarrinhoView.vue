@@ -2,8 +2,11 @@
 import { useCarrinhoStore } from '@/stores/carrinho';
 import { formatPrice } from '@/helpers/format';
 import HeaderProduto from '@/components/HeaderProduto.vue';
-
-const carrinhoStore = useCarrinhoStore();
+import ModalSpamZap from '@/components/ModalSpamZap.vue';
+import { ref } from 'vue';
+const carrinhoStore = useCarrinhoStore(); // Instância da store do carrinho
+const showSpamProduct = ref(false);
+const currentProduct = ref({});
 
 function removerProduto(produtoId) {
   carrinhoStore.removerProduto(produtoId);
@@ -29,10 +32,18 @@ function removerProduto(produtoId) {
           </div>
         </div>
         <h3>Total: {{ formatPrice(carrinhoStore.total) }}</h3>
-        <button @click="carrinhoStore.limparCarrinho()">Limpar Carrinho</button>
+        <button @click="carrinhoStore.limparCarrinho()" class="trash">Limpar Carrinho</button>
+        <div class="spam-product" v-if="showSpamProduct">
+          <ModalSpamZap :product="currentProduct" />
+        </div>
+        <button>
+          <ModalSpamZap v-if="showSpamProduct" @close="showSpamProduct = false" :product="currentProduct" />
+          Comprar
+          </button>
       </div>
     </div>
   </div>
+
 </template>
 
 <style scoped>
@@ -87,6 +98,8 @@ function removerProduto(produtoId) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: 150px;
+
 }
 
 button {
@@ -97,6 +110,11 @@ button {
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  max-width: 100px;
+}
+.trash{
+  max-width: 200px;
+  margin-right: 110px;
 }
 
 button:hover {
