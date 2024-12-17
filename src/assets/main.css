@@ -9,3 +9,22 @@
   font-weight: normal;
   font-family: 'Quicksand', sans-serif;
 }
+.swiper-button-next,
+.swiper-button-prev
+{
+  color: black !important; /* Força a cor das setas para preto */
+}
+.swiper-pagination-bullet-active {
+  background-color: black !important;
+}
+.icon-shop{
+  text-decoration: none;
+  color: white;
+}
+.rota{
+  text-decoration: none;
+  color: black;
+}
+
+
+

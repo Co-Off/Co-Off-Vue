@@ -7,9 +7,11 @@ import { formatPrice } from '@/helpers/format';
 
 const props = defineProps(['categoria_id']);
 const produtoStore = useProdutoStore();
-const carrinhoStore = useCarrinhoStore(); // Instância do carrinho
+const carrinhoStore = useCarrinhoStore(); // Instância da store do carrinho
 const showSpamProduct = ref(false);
 const currentProduct = ref({});
+const showToast = ref(false); // Controle do toast
+const toastMessage = ref(''); // Mensagem do toast
 
 async function getProdutos() {
   if (props.categoria_id) {
@@ -26,6 +28,11 @@ function showProduct(produto) {
 
 function adicionarAoCarrinho(produto) {
   carrinhoStore.adicionarProduto(produto); // Adiciona o produto ao carrinho
+  toastMessage.value = `${produto.nome} foi adicionado ao carrinho!`; // Mensagem de confirmação
+  showToast.value = true; // Exibe o toast
+  setTimeout(() => {
+    showToast.value = false; // Esconde o toast após 2 segundos
+  }, 6000);
 }
 
 watch(
@@ -40,6 +47,7 @@ onMounted(async () => {
   console.log(produtoStore.produtos);
 });
 </script>
+
 
 
 <template>
@@ -68,53 +76,53 @@ onMounted(async () => {
       </button>
     </div>
   </div>
+
+  <!-- Exibição do Toast de confirmação -->
+  <div v-if="showToast" class="toast">
+    {{ toastMessage }}
+  </div>
+
+  <!-- Modal de detalhes do produto -->
   <ModalSpamProduto v-if="showSpamProduct" @close="showSpamProduct = false" :product="currentProduct" />
 </template>
+
 <style scoped>
-.cards{
+/* Estilo para o Toast (mensagem temporária de confirmação) */
+.toast {
+  position: fixed;
+  top: 80px;
+  left: 80%;
+  transform: translateX(-50%);
+  background-color: #000000;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+  min-width: 200px;
+  text-align: center;
+
+}
+
+/* Estilos para os produtos */
+.cards {
   width: 200px;
   height: 300px;
-
   overflow: hidden;
   position: relative;
-
   border: solid;
   border-radius: 20px;
-   border-width: 0.15em;
+  border-width: 0.15em;
 }
+
 .cards:hover {
-  transform: scale(1.1,1.1);
-  transition-delay: 0.1s;
+  transform: scale(1.05, 1.05);
   transition: 0.4s;
 }
 
-.cards:hover > .cards:not(:hover) {
-  filter: blur(10px);
-  transform: scale(0.9, 0.9);
-}
 
-.icon {
-  background-color: #000000;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-
-  position: fixed;
-  bottom: 12rem;
-  right: 20px;
-}
-
-.icon:hover {
-  background-color: #bac9e8;
-  color: #0a2668;
-}
-
-.icon i {
-  font-size: 2rem;
-}
-
+/* Estilos da lista de produtos */
 .produto-list {
   display: flex;
   flex-wrap: wrap;
@@ -123,7 +131,6 @@ onMounted(async () => {
   gap: 2rem;
   text-align: center;
   background-color: #ffffff;
-  
 }
 
 .produto-card {
@@ -132,6 +139,7 @@ onMounted(async () => {
   border: #000000;
 }
 
+/* Estilo para as imagens dos produtos */
 .produto-img-wrapper {
   display: flex;
   justify-content: center;
@@ -147,6 +155,7 @@ onMounted(async () => {
   object-fit: cover;
 }
 
+/* Estilo para o nome e preço do produto */
 .produto-title-price {
   display: flex;
   flex-direction: column;
@@ -161,18 +170,9 @@ onMounted(async () => {
   color: #010101;
 }
 
-.produto-description-stars {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-
-.produto-description-stars p {
-  font-size: 12px;
-  color: #535050;
-}
+/* Estilo do botão de adicionar ao carrinho */
 .btn-carrinho {
-  background-color: #3498db;
+  background-color: #000000;
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -182,10 +182,5 @@ onMounted(async () => {
   margin-top: 10px;
   transition: background-color 0.3s ease;
 }
-
-.btn-carrinho:hover {
-  background-color: #2980b9;
-}
-
-
 </style>
+

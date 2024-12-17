@@ -25,4 +25,5 @@ export const useCarrinhoStore = defineStore('carrinho', {
       return this.items.reduce((sum, item) => sum + item.preco * item.quantidade, 0);
     },
   },
+  
 });
