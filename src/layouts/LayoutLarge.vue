@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<style scoped>
+  <style scoped>
 #layout-large {
   display: grid;
   grid-template-columns: 0fr 5fr;
@@ -35,18 +35,6 @@ header {
   justify-content: flex-end;
   grid-area: header;
 }
-
-aside {
-  border-right: #eeeeee 1px solid;
-  box-shadow: 0 0 10px 0 #eeeeee;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  grid-area: aside;
-}
-
 main {
   min-height: 80%;
   padding: none;

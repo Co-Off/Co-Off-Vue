@@ -1,6 +1,8 @@
 <script setup>
 import CategoryList from '@/components/CategoryList.vue';
 import HistoryBox from '@/components/HistoryBox.vue';
+import CarrosselProducts from '@/components/CarrosselProducts.vue';
+import SobreBox from '@/components/SobreBox.vue';
 
 import { onMounted } from 'vue';
 import { PassageUser } from '@passageidentity/passage-elements/passage-user';
@@ -31,6 +33,9 @@ onMounted(() => {
   <h2>Nossos Produtos:</h2>
   <category-list />
   <history-box />
+  <h2>Principais produtos vendidos:</h2>
+  <carrossel-products />
+  <sobre-box/>
 </template>
 <style scoped>
 main{
@@ -41,6 +46,5 @@ h2{
   text-align: center;
   font-size: 28px;
   color: #000000;
-  padding-bottom: 10px;
 }
 </style>

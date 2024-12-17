@@ -1,10 +1,15 @@
 <script setup>
 import CartPlus from 'vue-material-design-icons/CartPlus.vue'
 import Account from 'vue-material-design-icons/Account.vue'
+import ArrowLeft from 'vue-material-design-icons/ArrowLeft.vue';
 </script>
 
 <template>
   <div class="flex-container">
+      <router-link :to ="{name: 'Home' }" class="back">
+      <ArrowLeft class="a"/>
+      Voltar
+      </router-link>
     <div>
       <router-link :to="{ name: 'Home' }">
         <img src="@/assets/logo-horizontal-branca.png" class="logo" />
@@ -13,7 +18,7 @@ import Account from 'vue-material-design-icons/Account.vue'
     <div class="icons">
       <CartPlus class="icon-shop" />
       <router-link :to="{ name: 'Login' }" class="rota">
-        <button class="button">
+        <button class="botao">
           <div>Login</div>
           <Account class="icon-login" />
         </button>
@@ -23,10 +28,40 @@ import Account from 'vue-material-design-icons/Account.vue'
 </template>
 
 <style scoped>
+.a{
+  width: 24px;
+  height: 24px;
+}
+.back{
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  background-color: #000000;
+  border: none;
+  cursor: pointer;
+  height: 30px;
+  padding: 20px;
+  position: absolute;
+  top: 18px;
+  left: 10px;
+  width: 80px;
+  padding: 0px;
+  border-radius: 45px;
+  transition: all 0.5s ease;
+  align-items: center;
+  border: 1px solid #ffffff;
+}
+.back:hover {
+  background-color: white;
+  color: #000000;
+  transition: all 0.5s ease;
+}
 .rota {
   text-decoration: none;
 }
-.button {
+.botao {
   display: flex;
   background-color: #000000;
   color: white;
@@ -38,12 +73,12 @@ import Account from 'vue-material-design-icons/Account.vue'
   align-items: center;
   border: 1px solid #ffffff;
   position: absolute;
-  top: 24px;
+  top: 18px;
   right: 14px;
   width: 80px;
   height: 30px;
 }
-.button:hover {
+.botao:hover {
   background-color: white;
   color: #000000;
   transition: all 0.5s ease;
@@ -52,12 +87,12 @@ import Account from 'vue-material-design-icons/Account.vue'
   display: flex;
   flex-wrap: nowrap;
   background-color: black;
-  padding-bottom: 20px;
+  align-items: center;
+  justify-content: center;
 }
 .flex-container > div {
-  flex: auto;
   justify-content: center;
-  margin: 10px;
+  margin-top: 10px;
   margin-bottom: 0px;
   text-align: center;
   line-height: 50px;
@@ -66,18 +101,15 @@ import Account from 'vue-material-design-icons/Account.vue'
 
 .logo {
   width: 200px;
-  position: absolute;
-  top: 16px;
-  left: 818px;
+  cursor: pointer;
 }
 .icons {
   display: flex;
-  gap: 1rem;
-  align-items:;
-  margin-left: auto;
   color: #ffffff;
 }
 .icon-shop {
-  
+  position: absolute;
+  top: 10px;
+  right: 100px;  
 }
 </style>
