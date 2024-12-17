@@ -1,8 +1,10 @@
 <script setup>
 import '@passageidentity/passage-elements/passage-auth';
+import HeaderLogin from '@/components/HeaderLogin.vue';
 </script>
 
 <template>
+  <HeaderLogin />
   <div class="authContainer">
     <passage-auth
       app-id="MipV9McUste5xqsLinzpVkyU"
@@ -10,4 +12,5 @@ import '@passageidentity/passage-elements/passage-auth';
   </div>
 </template>
 
-<style></style>
+<style>
+</style>

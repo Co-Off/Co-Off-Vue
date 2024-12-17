@@ -3,6 +3,7 @@ import CategoryList from '@/components/CategoryList.vue';
 import HistoryBox from '@/components/HistoryBox.vue';
 import CarrosselProducts from '@/components/CarrosselProducts.vue';
 import SobreBox from '@/components/SobreBox.vue';
+import HeaderHome from '@/components/HeaderHome.vue';
 
 import { onMounted } from 'vue';
 import { PassageUser } from '@passageidentity/passage-elements/passage-user';
@@ -30,6 +31,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <header-home />
   <h2>Nossos Produtos:</h2>
   <category-list />
   <history-box />

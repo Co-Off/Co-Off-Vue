@@ -1,9 +1,11 @@
 <script setup>
 import ProductList from '@/components/ProductList.vue';
+import HeaderProduto from '@/components/HeaderProduto.vue';
 
 </script>
 <template>
     <div>
+        <HeaderProduto/>
         <h2>Nossos Produtos:</h2>
         <ProductList/>
     </div>

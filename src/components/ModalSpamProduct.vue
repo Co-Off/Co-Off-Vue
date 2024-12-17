@@ -106,8 +106,8 @@ defineProps(['product'])
   }
   .btn-close{
     font-size: 24px;
-    color: #ffffff;
-    background-color: #000000;
+    color: #000000;
+    background-color: #ffffff;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;

@@ -1,13 +1,15 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue';
 import { useProdutoStore } from '@/stores/produto';
-import ModalSpamProduto from './ModalSpamProduct.vue' 
+import { useCarrinhoStore } from '@/stores/carrinho'; // Importa a store do carrinho
+import ModalSpamProduto from './ModalSpamProduct.vue';
 import { formatPrice } from '@/helpers/format';
 
 const props = defineProps(['categoria_id']);
-const produtoStore = useProdutoStore(); 
-const showSpamProduct = ref(false)
-const currentProduct = ref({})
+const produtoStore = useProdutoStore();
+const carrinhoStore = useCarrinhoStore(); // Instância do carrinho
+const showSpamProduct = ref(false);
+const currentProduct = ref({});
 
 async function getProdutos() {
   if (props.categoria_id) {
@@ -18,8 +20,12 @@ async function getProdutos() {
 }
 
 function showProduct(produto) {
-  currentProduct.value = produto
-  showSpamProduct.value = true
+  currentProduct.value = produto;
+  showSpamProduct.value = true;
+}
+
+function adicionarAoCarrinho(produto) {
+  carrinhoStore.adicionarProduto(produto); // Adiciona o produto ao carrinho
 }
 
 watch(
@@ -31,12 +37,12 @@ watch(
 
 onMounted(async () => {
   await getProdutos();
-  console.log(produtoStore.produtos)
+  console.log(produtoStore.produtos);
 });
 </script>
 
+
 <template>
-  
   <div class="produto-list">
     <div v-if="produtoStore.produtos.length === 0">
       <h3 class="spam">Produtos não encontrados!</h3>
@@ -46,24 +52,24 @@ onMounted(async () => {
       :key="produto.id"
       class="cards"
     >
-        <div @click="showProduct(produto)">
-          <div class="produto-img-wrapper">
-            <img :src="produto.imagemDoProduto?.url" alt="produto.image" />
-            <i class="mdi mdi-heart-outline" />
-          </div>
-          <div class="produto-title-price">
-            <p>{{ produto.nome }}</p>
-            <p>{{ formatPrice(produto.preco * 1) }}</p>
-          </div>
-          <div class="produto-description-stars">
-            <!-- <p>{{ formatDescription(produto.descricao) }}</p> -->
-          </div>
+      <div @click="showProduct(produto)">
+        <div class="produto-img-wrapper">
+          <img :src="produto.imagemDoProduto?.url" alt="produto.image" />
+          <i class="mdi mdi-heart-outline" />
         </div>
+        <div class="produto-title-price">
+          <p>{{ produto.nome }}</p>
+          <p>{{ formatPrice(produto.preco) }}</p>
+        </div>
+      </div>
+      <!-- Botão para adicionar ao carrinho -->
+      <button @click.stop="adicionarAoCarrinho(produto)" class="btn-carrinho">
+        Adicionar ao Carrinho
+      </button>
     </div>
   </div>
-  <ModalSpamProduto v-if="showSpamProduct" @close="showSpamProduct=false" :product="currentProduct" />
+  <ModalSpamProduto v-if="showSpamProduct" @close="showSpamProduct = false" :product="currentProduct" />
 </template>
-
 <style scoped>
 .cards{
   width: 200px;
@@ -165,5 +171,21 @@ onMounted(async () => {
   font-size: 12px;
   color: #535050;
 }
+.btn-carrinho {
+  background-color: #3498db;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-carrinho:hover {
+  background-color: #2980b9;
+}
+
 
 </style>
