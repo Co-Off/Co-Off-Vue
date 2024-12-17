@@ -17,6 +17,7 @@ import Instagram from 'vue-material-design-icons/Instagram.vue';
   display: flex;
   gap: 4rem;
   font-size: 2.2rem;
+  color: black;
 }
 
 .Face:hover,

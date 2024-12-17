@@ -108,12 +108,14 @@ onMounted(async () => {
 /* Estilos para os produtos */
 .cards {
   width: 200px;
-  height: 300px;
+  height: fit-content;
   overflow: hidden;
   position: relative;
   border: solid;
+  padding-bottom: 20px ;
   border-radius: 20px;
   border-width: 0.15em;
+  color: #000000;
 }
 
 .cards:hover {
@@ -131,12 +133,6 @@ onMounted(async () => {
   gap: 2rem;
   text-align: center;
   background-color: #ffffff;
-}
-
-.produto-card {
-  width: 200px;
-  font-family: 'Belleza', sans-serif;
-  border: #000000;
 }
 
 /* Estilo para as imagens dos produtos */

@@ -19,12 +19,18 @@
 }
 .icon-shop{
   text-decoration: none;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 .rota{
   text-decoration: none;
   color: black;
 }
+.root{
+  color: black !important;
 
+}
+h2{
+  color: black;
+}
 
 
